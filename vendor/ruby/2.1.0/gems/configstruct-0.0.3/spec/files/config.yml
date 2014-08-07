@@ -1,5 +1,0 @@
----
-somevar: somevalue
-somearray:
-  - value 1
-  - value 2
