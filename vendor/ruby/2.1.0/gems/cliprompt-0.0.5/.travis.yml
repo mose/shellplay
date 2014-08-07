@@ -1,0 +1,8 @@
+language: ruby
+bundler_args: --path vendor
+cache: bundler
+rvm:
+  - 1.9.3
+  - 2.1.1
+env:
+  - CODECLIMATE_REPO_TOKEN=6db08b5c1a63559766b1277a5dc1dfb7ea10e02594180a7eb5c755bba50f40de
