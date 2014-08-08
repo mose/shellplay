@@ -1,43 +1,19 @@
 #!/usr/bin/env ruby
 
 require 'paint'
-require 'json'
 require 'open3'
-
-scenario = File.expand_path("../scenario.json", __FILE__)
-content = JSON.parse(IO.read(scenario))
-
-prompt = content['prompt']
-
-puts ENV['PS1']
 
 continue = true
 sleeptime = 1.0/24.0
 sleeptime = 0
 prompt = "\033[36mrecord >\033[0m "
 
-counter = 1
-def usage
-  puts "Usage: "
-end
-
-def shownext
-
-end
-
 while continue do
   print prompt
-  command = STDIN.gets.strip
-  case command
-  when 'q'
-    puts "\nPrez ended.\n"
+  command = STDIN.gets
+  if command == "q\n"
+    puts "\nRecord ended.\n"
     continue = false
-  when 'h'
-    puts usage
-  when 'ls'
-    puts content['content'].map { |c| c['command'] }
-  when ''
-    shownext
   else
     Open3.popen3("bash","-l","-c",command.strip) do |i, o, e, t|
       o.read.split("\n").each do |line|

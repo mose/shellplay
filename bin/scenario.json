@@ -1,0 +1,26 @@
+{
+  "title": "test prez",
+  "prompt": "\\[\\e[1;32m\\][\\u@\\h \\W]\\$\\[\\e[0m\\]",
+  "content": [
+    {
+      "prompt": true,
+      "command": "ls",
+      "output": "bin  CHANGELOG.md  Gemfile  Gemfile.lock  lib  LICENSE.txt  Rakefile  README.md  shellprez.gemspec  spec  vendor"
+    },
+    {
+      "prompt": true,
+      "command": "ls",
+      "output": "bin  CHANGELOG.md  Gemfile  Gemfile.lock  lib  LICENSE.txt  Rakefile  README.md  shellprez.gemspec  spec  vendor"
+    },
+    {
+      "prompt": true,
+      "command": "ls",
+      "output": "bin  CHANGELOG.md  Gemfile  Gemfile.lock  lib  LICENSE.txt  Rakefile  README.md  shellprez.gemspec  spec  vendor"
+    },
+    {
+      "prompt": true,
+      "command": "ls",
+      "output": "bin  CHANGELOG.md  Gemfile  Gemfile.lock  lib  LICENSE.txt  Rakefile  README.md  shellprez.gemspec  spec  vendor"
+    }
+  ]
+}
