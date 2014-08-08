@@ -18,12 +18,13 @@ sleeptime = 0
 counter = 1
 def usage
   puts "\nCommands: "
-  puts "  h,?      show help"
-  puts "  s        list screens"
-  puts "  s#       jump to screen #"
-  puts "  <enter>  jump to next screen"
-  puts "  p        jump to previous screen"
-  puts "  x,q      quit"
+  puts "  h,?        show help"
+  puts "  s          list screens"
+  puts "  s#         jump to screen #"
+  puts "  <enter>    jump to next screen"
+  puts "  p          jump to previous screen"
+  puts "  <command>  execute a subcommand in a bash -l -c"
+  puts "  x,q        quit"
   puts
 end
 

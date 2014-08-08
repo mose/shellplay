@@ -11,9 +11,21 @@ Note: this is a work inprogress, nothing there to be seen yet.
 
     gem install shellprez
 
-## Usage
+## Recording a session
 
-TODO: Write usage instructions here
+For recording a session
+
+    shellrecord
+
+Then type the commands you want to record, type `?` for the help on special commands.
+
+## Playing a session
+
+For playing
+
+    shelprez <presentation-file.json>
+
+Then type enter to go next, or `?` to display list of available commands.
 
 ## Contributing
 
