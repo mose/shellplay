@@ -1,6 +1,6 @@
 {
   "title": "test prez",
-  "prompt": "\\[\\e[1;32m\\][\\u@\\h \\W]\\$\\[\\e[0m\\]",
+  "prompt": "\e[30;40mrecord >\e[0m ",
   "content": [
     {
       "prompt": true,
@@ -9,18 +9,18 @@
     },
     {
       "prompt": true,
-      "command": "ls",
-      "output": "bin  CHANGELOG.md  Gemfile  Gemfile.lock  lib  LICENSE.txt  Rakefile  README.md  shellprez.gemspec  spec  vendor"
+      "command": "ll",
+      "output": "total 72\n-rw-r--r--+  1 mose  staff   3.5K Aug  8 14:15 CHANGELOG.md\n-rw-r--r--+  1 mose  staff   103B Sep 18  2013 Gemfile\n-rw-r--r--+  1 mose  staff   1.0K Dec 25  2013 Gemfile.lock\n-rw-r--r--+  1 mose  staff   1.1K Sep 23  2013 LICENSE.txt\n-rw-r--r--+  1 mose  staff    11K Aug  8 14:16 README.md\n-rw-r--r--+  1 mose  staff   497B Sep 23  2013 Rakefile\ndrwxr-xr-x+  3 mose  staff   102B Sep 18  2013 bin\ndrwxr-xr-x+  4 mose  staff   136B Oct 25  2013 coverage\ndrwxr-xr-x+  4 mose  staff   136B Oct 30  2013 lib\ndrwxr-xr-x+ 12 mose  staff   408B Dec 25  2013 pkg\ndrwxr-xr-x+  5 mose  staff   170B Oct 23  2013 spec\ndrwxr-xr-x+  3 mose  staff   102B Sep 18  2013 templates\ndrwxr-xr-x+  4 mose  staff   136B Jan 21  2014 vendor\n-rw-r--r--+  1 mose  staff   1.1K Nov  9  2013 zabbix-ruby-client.gemspec\ndrwxr-xr-x+ 18 mose  staff   612B Aug  8 15:42 zabbix-templates"
     },
     {
       "prompt": true,
-      "command": "ls",
-      "output": "bin  CHANGELOG.md  Gemfile  Gemfile.lock  lib  LICENSE.txt  Rakefile  README.md  shellprez.gemspec  spec  vendor"
+      "command": "tree spec/lib/",
+      "output": "spec/lib/\n├── cli_spec.rb\n├── data_spec.rb\n├── files\n│   └── logs\n├── logger_spec.rb\n├── plugin_base_spec.rb\n├── plugins\n│   ├── apache_spec.rb\n│   ├── apt_spec.rb\n│   ├── cpu_spec.rb\n│   ├── disk_spec.rb\n│   ├── load_spec.rb\n│   ├── memory_spec.rb\n│   └── network_spec.rb\n├── plugins_spec.rb\n├── runner_spec.rb\n└── store_spec.rb\n\n3 directories, 14 files"
     },
     {
       "prompt": true,
-      "command": "ls",
-      "output": "bin  CHANGELOG.md  Gemfile  Gemfile.lock  lib  LICENSE.txt  Rakefile  README.md  shellprez.gemspec  spec  vendor"
+      "command": "head README.md",
+      "output": "Zabbix Ruby Client"
     }
   ]
 }
