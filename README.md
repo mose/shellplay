@@ -1,4 +1,4 @@
-Shellprez
+Shreplay
 ==================
 
 This is a CLI tool for recording and presenting step by step operations from the console. It is targeted at presentations that would simulate live coding, without the random murphy factor of it.
@@ -9,7 +9,7 @@ Note: this is a work inprogress, nothing there to be seen yet.
 
 ## Installation
 
-    gem install shellprez
+    gem install shreplay
 
 ## Usage
 

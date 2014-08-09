@@ -1,4 +1,4 @@
-ShellPrez Changelog
+ShReplay Changelog
 =========================
 
 v0.0.2 - wip

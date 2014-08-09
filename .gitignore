@@ -21,3 +21,5 @@ tmp
 *.a
 mkmf.log
 /vendor
+*.sublime-project
+*.sublime-workspace
