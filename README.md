@@ -15,7 +15,7 @@ Note: this is a work inprogress, nothing there to be seen yet.
 
 For recording a session
 
-    shellrecord
+    shrecord
 
 Then type the commands you want to record, type `?` for the help on special commands.
 
@@ -23,7 +23,7 @@ Then type the commands you want to record, type `?` for the help on special comm
 
 For playing
 
-    shelprez <presentation-file.json>
+    shreplay <presentation-file.json>
 
 Then type enter to go next, or `?` to display list of available commands.
 

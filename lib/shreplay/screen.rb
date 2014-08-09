@@ -12,11 +12,21 @@ module Shreplay
     end
 
     def import(hash)
-      @displaycommand = hash['displaycommand']
-      @stdin = hash['stdin']
-      @stdout = hash['stdout']
-      @stderr = hash['stderr']
-      @timespent = hash['timespent']
+      @displaycommand = hash[:displaycommand]
+      @stdin = hash[:stdin]
+      @stdout = hash[:stdout]
+      @stderr = hash[:stderr]
+      @timespent = hash[:timespent]
+    end
+
+    def export
+      {
+        displaycommand: @displaycommand,
+        stdin: @stdin,
+        stdout: @stdout,
+        stderr: @stderr,
+        timespent: @timespent
+      }
     end
 
   end
