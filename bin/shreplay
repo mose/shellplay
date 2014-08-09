@@ -14,11 +14,18 @@ puts ENV['PS1']
 continue = true
 sleeptime = 1.0/24.0
 sleeptime = 0
-prompt = "\033[36mrecord >\033[0m "
 
 counter = 1
 def usage
-  puts "Usage: "
+  puts "\nCommands: "
+  puts "  h,?        show help"
+  puts "  s          list screens"
+  puts "  s#         jump to screen #"
+  puts "  <enter>    jump to next screen"
+  puts "  p          jump to previous screen"
+  puts "  <command>  execute a subcommand in a bash -l -c"
+  puts "  x,q        quit"
+  puts
 end
 
 def shownext
@@ -26,16 +33,21 @@ def shownext
 end
 
 while continue do
-  print prompt
+  printf "\e[1;39;42m $ shellprez \e[0;32;47m\e[37;40m\e[0m "
+  # printf prompt
   command = STDIN.gets.strip
   case command
-  when 'q'
+  when /^(?:q|x)$/
     puts "\nPrez ended.\n"
     continue = false
-  when 'h'
-    puts usage
-  when 'ls'
-    puts content['content'].map { |c| c['command'] }
+  when /^(?:\?|h)$/
+    usage
+  when /^s$/
+    content['content'].map { |c| c['command'] }.each_with_index do |l, i|
+      printf("   s%-3s %s\n", i, l)
+    end
+  when /s([0-9]+)/
+    puts "going to screen #{$1}"
   when ''
     shownext
   else
