@@ -3,6 +3,7 @@ Shellplay Changelog
 
 v0.0.4 - wip
 ------------------
+- add changelog link in the gemspec
 
 v0.0.3 - 2014-08-11
 -------------------

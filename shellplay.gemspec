@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{CLI tool for shell-based presentations.}
   spec.description   = %q{CLI tool for shell-based presentation. Think powerpoint in the console for commandline demos.}
   spec.homepage      = "https://github.com/mose/shellplay"
+  spec.metadata      = { "changelog" => "https://github.com/mose/shellplay/blob/master/CHANGELOG.md" }
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
