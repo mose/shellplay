@@ -6,11 +6,10 @@ require 'open3'
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'shellplay/session'
+require 'shellplay'
 
 continue = true
-sleeptime = 1.0/60.0
-sleeptime = 0
+sleeptime = 1.0/48.0
 
 session = Shellplay::Session.new
 prompt = "\e[36mrecord >\e[0m"

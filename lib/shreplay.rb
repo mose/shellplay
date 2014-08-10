@@ -1,5 +1,4 @@
-require "shellplay/version"
+require 'shellplay/session'
 
 module Shellplay
-  # Your code goes here...
 end

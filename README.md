@@ -39,6 +39,8 @@ Then type enter to go next, or `?` to display list of available commands.
 
 ## Todo
 
+- handle the no-display entries
+- add a function in player to edit a screen
 - when prototype is ready, switch to v0.1.0
 - test coverage
 - save and load sessions from gist
