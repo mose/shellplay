@@ -1,7 +1,7 @@
 module Shellplay
   class Screen
 
-    attr_reader :stdin, :stdout, :stderr, :display, :timespent
+    attr_reader :stdin, :stdout, :stderr, :display, :timespent, :displaycommand
 
     def initialize
       @displaycommand = true

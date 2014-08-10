@@ -31,13 +31,17 @@ def usage
 end
 
 def display(screen)
-  print @session.config.prompt
-  sleep @sleeptime
-  print screen.stdin
-  STDIN.gets
+  if screen.displaycommand
+    print @session.config.prompt
+    sleep @sleeptime
+    print screen.stdin
+    STDIN.gets
+    @lastelapsed = screen.timespent
+  else
+    @lastelapsed = 0
+  end
   puts screen.stdout
   puts Paint[screen.stderr, :red]
-  @lastelapsed = screen.timespent
 end
 
 def shownext
