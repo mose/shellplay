@@ -1,4 +1,4 @@
-Shreplay
+Shellplay
 ==================
 
 This is a CLI tool for recording and presenting step by step operations from the console. It is targeted at presentations that would simulate live coding, without the random murphy factor of it.
@@ -9,7 +9,7 @@ Note: this is a work inprogress, nothing there to be seen yet.
 
 ## Installation
 
-    gem install shreplay
+    gem install shellplay
 
 ## Recording a session
 
@@ -23,7 +23,7 @@ Then type the commands you want to record, type `?` for the help on special comm
 
 For playing
 
-    shreplay <presentation-file.json>
+    shellplay <presentation-file.json>
 
 Then type enter to go next, or `?` to display list of available commands.
 

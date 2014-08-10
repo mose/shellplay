@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-require "shreplay/session"
+require "shellplay/session"
 
-describe Shreplay::Session, "A shreplay session" do
+describe Shellplay::Session, "A shellplay session" do
 
   let(:sessionfile) { File.expand_path('../../../files/session.json', __FILE__)}
   let(:input) { StringIO.new }
   let(:output) { StringIO.new }
-  subject { Shreplay::Session.new(input, output) }
+  subject { Shellplay::Session.new(input, output) }
 
   describe '.new' do
     context 'when there is no prior configuration file, ' do

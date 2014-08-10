@@ -1,4 +1,4 @@
-module Shreplay
+module Shellplay
   class Screen
 
     attr_reader :stdin, :stdout, :stderr, :display, :timespent

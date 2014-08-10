@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-require "shreplay/screen"
+require "shellplay/screen"
 
-describe Shreplay::Screen, "A typical screen element" do
+describe Shellplay::Screen, "A typical screen element" do
 
   let(:goodhash) {
     {
@@ -12,7 +12,7 @@ describe Shreplay::Screen, "A typical screen element" do
     }
   }
 
-  subject { Shreplay::Screen.new }
+  subject { Shellplay::Screen.new }
 
   describe ".import" do
 

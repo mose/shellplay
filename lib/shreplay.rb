@@ -1,5 +1,5 @@
-require "shreplay/version"
+require "shellplay/version"
 
-module Shreplay
+module Shellplay
   # Your code goes here...
 end

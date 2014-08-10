@@ -6,31 +6,43 @@ require 'open3'
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'shreplay/session'
+require 'shellplay/session'
 
 continue = true
 sleeptime = 1.0/60.0
 sleeptime = 0
 
-session = Shreplay::Session.new
+session = Shellplay::Session.new
 prompt = "\e[36mrecord >\e[0m"
 
 while continue do
   printf("\e[36mrecord >\e[33m %d > \e[0m", session.pointer)
-  command = STDIN.gets
-  if command == "q\n"
+  command = STDIN.gets.strip
+  if command == "q"
     session.save
     puts "\nRecord ended.\n"
     continue = false
   else
+    if command[0] == '#'
+      command = command[1..-1].strip
+      displaycommand = false
+    else
+      displaycommand = true
+    end
     start_time = Time.now
-    Open3.popen3("bash","-l","-c",command.strip) do |i, o, e, t|
-      screen = Shreplay::Screen.new
+    Open3.popen3("bash","-l","-c",command) do |i, o, e, t|
+      screen = Shellplay::Screen.new
       out = o.read
       err = e.read
       end_time = Time.now
       elapsed = end_time - start_time
-      session.add_screen({stdin: command.strip, stdout: out, stderr: err, timespent: elapsed})
+      session.add_screen({
+        displaycommand: displaycommand,
+        stdin: command,
+        stdout: out,
+        stderr: err,
+        timespent: elapsed
+        })
       out.split("\n").each do |line|
         puts line
         sleep sleeptime

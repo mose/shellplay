@@ -1,10 +1,10 @@
 require "cliprompt"
 require "json"
 
-require "shreplay/config"
-require "shreplay/screen"
+require "shellplay/config"
+require "shellplay/screen"
 
-module Shreplay
+module Shellplay
   class Session
 
     include Cliprompt
@@ -15,11 +15,13 @@ module Shreplay
       @sequence = []
       @name = false
       @title = false
-      @config = Shreplay::Config.new(nil, input, output)
+      @config = Shellplay::Config.new(nil, input, output)
       @pointer = 0
     end
 
-    def import(file)
+    def import(name)
+      name ||= ask "What session do you want to load?", Dir.glob(File.join(@config.basedir, "*.json"))
+      infile = File.join(@config.basedir, "#{@name}.json")
       data = JSON.parse(IO.read(file))
       @title = data['title']
       data['sequence'].each do |screenhash|
@@ -28,7 +30,7 @@ module Shreplay
     end
 
     def add_screen(screenhash)
-      s = Shreplay::Screen.new
+      s = Shellplay::Screen.new
       s.import(screenhash)
       @sequence << s
     end
