@@ -9,20 +9,21 @@ module Shellplay
 
     include Cliprompt
 
-    attr_reader :title, :config, :pointer
+    attr_reader :title, :config, :pointer, :sequence
 
     def initialize(input = STDIN, output = STDOUT)
       @sequence = []
-      @name = false
       @title = false
       @config = Shellplay::Config.new(nil, input, output)
       @pointer = 0
     end
 
     def import(name)
-      name ||= ask "What session do you want to load?", Dir.glob(File.join(@config.basedir, "*.json"))
-      infile = File.join(@config.basedir, "#{@name}.json")
-      data = JSON.parse(IO.read(file))
+      name ||= ask "What session do you want to load?",
+        aslist: true,
+        choices: Dir.glob(File.join(@config.basedir, '*.json')).map { |f| File.basename(f, '.json') }
+      infile = File.join(@config.basedir, "#{name}.json")
+      data = JSON.parse(IO.read(infile))
       @title = data['title']
       data['sequence'].each do |screenhash|
         add_screen(screenhash)
@@ -37,6 +38,15 @@ module Shellplay
 
     def next
       @pointer += 1
+    end
+
+    def show(index)
+      @pointer = index.to_i
+      current_screen
+    end
+
+    def current_screen
+      @sequence[@pointer]
     end
 
     def save

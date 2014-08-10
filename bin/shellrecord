@@ -37,11 +37,11 @@ while continue do
       end_time = Time.now
       elapsed = end_time - start_time
       session.add_screen({
-        displaycommand: displaycommand,
-        stdin: command,
-        stdout: out,
-        stderr: err,
-        timespent: elapsed
+        'displaycommand' => displaycommand,
+        'stdin' => command,
+        'stdout' => out,
+        'stderr' => err,
+        'timespent' => elapsed
         })
       out.split("\n").each do |line|
         puts line

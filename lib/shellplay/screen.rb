@@ -12,11 +12,11 @@ module Shellplay
     end
 
     def import(hash)
-      @displaycommand = hash[:displaycommand]
-      @stdin = hash[:stdin]
-      @stdout = hash[:stdout]
-      @stderr = hash[:stderr]
-      @timespent = hash[:timespent]
+      @displaycommand = hash['displaycommand']
+      @stdin = hash['stdin']
+      @stdout = hash['stdout']
+      @stderr = hash['stderr']
+      @timespent = hash['timespent']
     end
 
     def export

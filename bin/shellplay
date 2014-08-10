@@ -10,14 +10,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'shellplay/session'
 
-session = Shellplay::Session.new
-session.import(ARGV[1])
-
-scenario = File.expand_path("../scenario.json", __FILE__)
-content = JSON.parse(IO.read(scenario))
+@session = Shellplay::Session.new
+@session.import(ARGV[0])
 
 continue = true
-sleeptime = 1.0/24.0
+@sleeptime = 1.0/48.0
+@lastelapsed = 0
 
 counter = 1
 def usage
@@ -32,25 +30,52 @@ def usage
   puts
 end
 
-def shownext
+def display(screen)
+  print @session.config.prompt
+  sleep @sleeptime
+  print screen.stdin
+  STDIN.gets
+  puts screen.stdout
+  puts Paint[screen.stderr, :red]
+  @lastelapsed = screen.timespent
+end
 
+def shownext
+  if @session.current_screen and @session.current_screen.stdin
+    display @session.current_screen
+    @session.next
+  else
+    puts "You are at the end of the session."
+    @lastelapsed = 0
+  end
+end
+
+def show(index)
+  if @session.show(index).stdin
+    display @session.show(index)
+    @session.next
+  else
+    puts "You are at the end of the session."
+    @lastelapsed = 0
+  end
 end
 
 while continue do
-  printf session.config.prompt
+  printf "\e[36m>\e[0m "
+  printf "\e[35melapsed: #{@lastelapsed}s\e[0m " unless @lastelapsed == 0
   command = STDIN.gets.strip
   case command
   when /^(?:q|x)$/
-    puts "\nPrez ended.\n"
+    puts "\nPlay ended.\n"
     continue = false
   when /^(?:\?|h)$/
     usage
   when /^s$/
-    content['content'].map { |c| c['command'] }.each_with_index do |l, i|
+    @session.sequence.map { |c| c.stdin }.each_with_index do |l, i|
       printf("   s%-3s %s\n", i, l)
     end
   when /s([0-9]+)/
-    puts "going to screen #{$1}"
+    show($1)
   when ''
     shownext
   else
