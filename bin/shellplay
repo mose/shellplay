@@ -32,6 +32,13 @@ def usage
 end
 
 def display(screen)
+  if screen.clearscreen
+    if ENV['TERM_PROGRAM'] = 'iTerm.app'
+      printf "\e]50;ClearScrollback\a"
+    else
+      printf "\e\143"
+    end
+  end
   if screen.displaycommand
     print @session.config.prompt
     sleep @sleeptime

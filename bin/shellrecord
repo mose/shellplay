@@ -9,7 +9,6 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'shellplay'
 
 continue = true
-sleeptime = 1.0/48.0
 
 session = Shellplay::Session.new
 prompt = "\e[36mrecord >\e[0m"
@@ -31,6 +30,7 @@ while continue do
   else
     displaycommand = true
     playprompt = true
+    clearscreen = false
     if command[0] == '#'
       command = command[1..-1].strip
       displaycommand = false
@@ -38,6 +38,10 @@ while continue do
         command = command[1..-1].strip
         playprompt = false
       end
+    end
+    if command[0] == '/'
+      command = command[1..-1].strip
+      clearscreen = true
     end
     start_time = Time.now
     Open3.popen3("bash","-l","-c",command) do |i, o, e, t|
@@ -49,6 +53,7 @@ while continue do
       session.add_screen({
         'displaycommand' => displaycommand,
         'playprompt' => playprompt,
+        'clearscreen' => clearscreen,
         'stdin' => command,
         'stdout' => out,
         'stderr' => err,
@@ -56,7 +61,6 @@ while continue do
         })
       out.split("\n").each do |line|
         puts line
-        sleep sleeptime
       end
       err.split("\n").each do |line|
         puts Paint[line, :red]

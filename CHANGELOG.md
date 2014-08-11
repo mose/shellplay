@@ -3,6 +3,7 @@ Shellplay Changelog
 
 v0.0.5 - wip
 ------------------
+- add a `/` record prefix for clearscreen, works on iterm and linux
 
 v0.0.4 - 2014-08-12
 ------------------
