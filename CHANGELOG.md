@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.0.5 - wip
+------------------
+
 v0.0.4 - 2014-08-12
 ------------------
 - add changelog link in the gemspec
