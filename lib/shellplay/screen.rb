@@ -1,10 +1,11 @@
 module Shellplay
   class Screen
 
-    attr_reader :stdin, :stdout, :stderr, :display, :timespent, :displaycommand
+    attr_reader :stdin, :stdout, :stderr, :display, :timespent, :displaycommand, :playprompt
 
     def initialize
       @displaycommand = true
+      @playprompt = true
       @stdin = nil
       @stdout = nil
       @stderr = nil
@@ -12,7 +13,8 @@ module Shellplay
     end
 
     def import(hash)
-      @displaycommand = hash['displaycommand']
+      @displaycommand = !!hash['displaycommand']
+      @playprompt = !!hash['playprompt']
       @stdin = hash['stdin']
       @stdout = hash['stdout']
       @stderr = hash['stderr']
@@ -22,6 +24,7 @@ module Shellplay
     def export
       {
         displaycommand: @displaycommand,
+        playprompt: @playprompt,
         stdin: @stdin,
         stdout: @stdout,
         stderr: @stderr,

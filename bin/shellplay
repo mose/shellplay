@@ -16,6 +16,7 @@ require 'shellplay/session'
 continue = true
 @sleeptime = 1.0/48.0
 @lastelapsed = 0
+@noplayprompt = false
 
 counter = 1
 def usage
@@ -40,8 +41,10 @@ def display(screen)
   else
     @lastelapsed = 0
   end
-  puts screen.stdout
-  puts Paint[screen.stderr, :red]
+  printf screen.stdout
+  if screen.stderr != ""
+    printf "\n#{Paint[screen.stderr, :red]}"
+  end
 end
 
 def shownext
@@ -65,7 +68,7 @@ def show(index)
 end
 
 while continue do
-  printf "\e[36m>\e[0m "
+  printf "\n\e[36m>\e[0m " if @playprompt
   printf "\e[35melapsed: #{@lastelapsed}s\e[0m " unless @lastelapsed == 0
   command = STDIN.gets.strip
   case command
@@ -85,11 +88,11 @@ while continue do
   else
     Open3.popen3("bash","-l","-c",command.strip) do |i, o, e, t|
       o.read.split("\n").each do |line|
-        puts line
+        printf line
         sleep sleeptime
       end
       e.read.split("\n").each do |line|
-        puts Paint[line, :red]
+        printf Paint[line, :red]
       end
     end
   end

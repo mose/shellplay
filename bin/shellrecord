@@ -17,16 +17,27 @@ prompt = "\e[36mrecord >\e[0m"
 while continue do
   printf("\e[36mrecord >\e[33m %d > \e[0m", session.pointer)
   command = STDIN.gets.strip
-  if command == "q"
+  case command
+  when "q"
     session.save
     puts "\nRecord ended.\n"
     continue = false
+  when "d"
+    if session.pointer == 0
+      puts "There is no screen to delete."
+    else
+      session.drop_last_screen
+    end
   else
+    displaycommand = true
+    playprompt = true
     if command[0] == '#'
       command = command[1..-1].strip
       displaycommand = false
-    else
-      displaycommand = true
+      if command[0] == '#'
+        command = command[1..-1].strip
+        playprompt = false
+      end
     end
     start_time = Time.now
     Open3.popen3("bash","-l","-c",command) do |i, o, e, t|
@@ -37,6 +48,7 @@ while continue do
       elapsed = end_time - start_time
       session.add_screen({
         'displaycommand' => displaycommand,
+        'playprompt' => playprompt,
         'stdin' => command,
         'stdout' => out,
         'stderr' => err,

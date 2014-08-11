@@ -36,6 +36,11 @@ module Shellplay
       @sequence << s
     end
 
+    def drop_last_screen
+      @sequence.pop
+      @pointer -= 1
+    end
+
     def next
       @pointer += 1
     end

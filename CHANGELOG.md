@@ -1,9 +1,11 @@
 Shellplay Changelog
 =========================
 
-v0.0.4 - wip
+v0.0.4 - 2014-08-12
 ------------------
 - add changelog link in the gemspec
+- add a `##` record option for inhibiting display of the play prompt
+- add a `d` record command to drop last screen
 
 v0.0.3 - 2014-08-11
 -------------------
