@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.0.7 - wip
+-------------------
+
 v0.0.6 - 2014-08-13
 --------------------
 - save json session in pretty format for manual intervention
