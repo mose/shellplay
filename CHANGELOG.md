@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.0.6 - wip
+--------------------
+
 v0.0.5 - 2014-08-12
 ------------------
 - add a `/` record prefix for clearscreen, works with iterm2 on mac, linux trick don't work yet
