@@ -1,12 +1,13 @@
 module Shellplay
   class Screen
 
-    attr_reader :stdin, :stdout, :stderr, :display, :timespent, :displaycommand, :playprompt, :clearscreen
+    attr_reader :stdin, :stdout, :stderr, :display, :timespent, :displaycommand, :playprompt, :clearscreen, :customprompt
 
     def initialize
       @displaycommand = true
       @playprompt = true
       @clearscreen = false
+      @customprompt = nil
       @stdin = nil
       @stdout = nil
       @stderr = nil
@@ -17,6 +18,7 @@ module Shellplay
       @displaycommand = !!hash['displaycommand']
       @playprompt = !!hash['playprompt']
       @clearscreen = !!hash['clearscreen']
+      @customprompt = hash['customprompt']
       @stdin = hash['stdin']
       @stdout = hash['stdout']
       @stderr = hash['stderr']
@@ -28,6 +30,7 @@ module Shellplay
         displaycommand: @displaycommand,
         playprompt: @playprompt,
         clearscreen: @clearscreen,
+        customprompt: @customprompt,
         stdin: @stdin,
         stdout: @stdout,
         stderr: @stderr,

@@ -12,10 +12,15 @@ continue = true
 
 session = Shellplay::Session.new
 prompt = "\e[36mrecord >\e[0m"
+customprompt = nil
 
 while continue do
   printf("\e[36mrecord >\e[33m %d > \e[0m", session.pointer)
   command = STDIN.gets.strip
+  displaycommand = true
+  playprompt = true
+  clearscreen = false
+  fakeit = false
   case command
   when "q"
     session.save
@@ -27,10 +32,31 @@ while continue do
     else
       session.drop_last_screen
     end
+  when ""
+    screen = Shellplay::Screen.new
+    session.add_screen({
+      'displaycommand' => false,
+      'playprompt' => false,
+      'clearscreen' => true,
+      'customprompt' => nil,
+      'stdin' => '',
+      'stdout' => '',
+      'stderr' => '',
+      'timespent' => 0
+    })
+  when /^>/
+    command = command[1..-1].strip
+    if command[0] == '>'
+      customprompt = nil
+    else
+      print "New prompt: " + command.gsub(/\\e/,27.chr) + "\n"
+      customprompt = command.gsub(/\\e/,27.chr)
+    end
   else
-    displaycommand = true
-    playprompt = true
-    clearscreen = false
+    if command[0] == '?'
+      command = command[1..-1].strip
+      fakeit = true
+    end
     if command[0] == '#'
       command = command[1..-1].strip
       displaycommand = false
@@ -43,27 +69,52 @@ while continue do
       command = command[1..-1].strip
       clearscreen = true
     end
-    start_time = Time.now
-    Open3.popen3("bash","-l","-c",command) do |i, o, e, t|
+    if fakeit
+      go_on = true
+      out = ""
+      while go_on do
+        line = STDIN.gets
+        if line == ".\n"
+          go_on = false
+        else
+          out << line
+        end
+      end
       screen = Shellplay::Screen.new
-      out = o.read
-      err = e.read
-      end_time = Time.now
-      elapsed = end_time - start_time
       session.add_screen({
         'displaycommand' => displaycommand,
         'playprompt' => playprompt,
         'clearscreen' => clearscreen,
+        'customprompt' => customprompt,
         'stdin' => command,
         'stdout' => out,
-        'stderr' => err,
-        'timespent' => elapsed
-        })
-      out.split("\n").each do |line|
-        puts line
-      end
-      err.split("\n").each do |line|
-        puts Paint[line, :red]
+        'stderr' => '',
+        'timespent' => 0
+      })
+    else
+      start_time = Time.now
+      Open3.popen3(command) do |i, o, e, t|
+        screen = Shellplay::Screen.new
+        out = o.read
+        err = e.read
+        end_time = Time.now
+        elapsed = end_time - start_time
+        session.add_screen({
+          'displaycommand' => displaycommand,
+          'playprompt' => playprompt,
+          'clearscreen' => clearscreen,
+          'customprompt' => customprompt,
+          'stdin' => command,
+          'stdout' => out,
+          'stderr' => err,
+          'timespent' => elapsed
+          })
+        out.split("\n").each do |line|
+          puts line
+        end
+        err.split("\n").each do |line|
+          puts Paint[line, :red]
+        end
       end
     end
     session.next

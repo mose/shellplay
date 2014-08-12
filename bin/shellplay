@@ -40,7 +40,11 @@ def display(screen)
     end
   end
   if screen.displaycommand
-    print @session.config.prompt
+    if screen.customprompt
+      print screen.customprompt
+    else
+      print @session.config.prompt
+    end
     sleep @sleeptime
     print screen.stdin
     STDIN.gets
@@ -48,7 +52,7 @@ def display(screen)
   else
     @lastelapsed = 0
   end
-  printf screen.stdout
+  print screen.stdout
   if screen.stderr != ""
     printf "\n#{Paint[screen.stderr, :red]}"
   end
@@ -75,8 +79,8 @@ def show(index)
 end
 
 while continue do
-  printf "\n\e[36m>\e[0m " if @playprompt
-  printf "\e[35melapsed: #{@lastelapsed}s\e[0m " unless @lastelapsed == 0
+  print "\n\e[36m>\e[0m " if @playprompt
+  print "\e[35melapsed: #{@lastelapsed}s\e[0m " unless @lastelapsed == 0
   command = STDIN.gets.strip
   case command
   when /^(?:q|x)$/
@@ -95,11 +99,11 @@ while continue do
   else
     Open3.popen3("bash","-l","-c",command.strip) do |i, o, e, t|
       o.read.split("\n").each do |line|
-        printf line
+        print line
         sleep sleeptime
       end
       e.read.split("\n").each do |line|
-        printf Paint[line, :red]
+        print Paint[line, :red]
       end
     end
   end

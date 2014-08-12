@@ -1,9 +1,12 @@
 Shellplay Changelog
 =========================
 
-v0.0.5 - wip
+v0.0.5 - 2014-08-12
 ------------------
-- add a `/` record prefix for clearscreen, works on iterm and linux
+- add a `/` record prefix for clearscreen, works with iterm2 on mac, linux trick don't work yet
+- add a `?` record prefix for faking output, in case of ssh connection for example
+- add a `>` to change the prompt and a `>>` to switch prompt back and forth
+- code is getting messy, it will be time to refactor the record into some classes soon
 
 v0.0.4 - 2014-08-12
 ------------------
