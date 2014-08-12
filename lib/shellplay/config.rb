@@ -16,6 +16,7 @@ module Shellplay
       output.puts Paint['Create a new shellplay configuration:', :blue]
       values['editor'] = guess 'EDITOR', 'What is the path to launch your text editor?', 'vim'
       values['prompt'] = ask 'What is the default prompt you want to use?'
+      values['timeformat'] = ask 'What is the time format you want to display?', '%.1f'
       write values
     end
 

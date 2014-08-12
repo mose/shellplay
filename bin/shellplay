@@ -16,7 +16,7 @@ require 'shellplay/session'
 continue = true
 @sleeptime = 1.0/48.0
 @lastelapsed = 0
-@noplayprompt = false
+@playprompt = true
 
 counter = 1
 def usage
@@ -53,6 +53,7 @@ def display(screen)
     @lastelapsed = 0
   end
   print screen.stdout
+  @playprompt = screen.playprompt
   if screen.stderr != ""
     printf "\n#{Paint[screen.stderr, :red]}"
   end
@@ -63,7 +64,8 @@ def shownext
     display @session.current_screen
     @session.next
   else
-    puts "You are at the end of the session."
+    print Paint["... ", :cyan]
+    @playprompt = false
     @lastelapsed = 0
   end
 end
@@ -79,8 +81,10 @@ def show(index)
 end
 
 while continue do
-  print "\n\e[36m>\e[0m " if @playprompt
-  print "\e[35melapsed: #{@lastelapsed}s\e[0m " unless @lastelapsed == 0
+  if @playprompt
+    print "\n\e[33m>\e[0m "
+    printf("\e[33melapsed: \e[0m\e[1;93m#{@session.config.timeformat}s\e[0m ", @lastelapsed) unless @lastelapsed == 0
+  end
   command = STDIN.gets.strip
   case command
   when /^(?:q|x)$/
@@ -97,13 +101,13 @@ while continue do
   when ''
     shownext
   else
-    Open3.popen3("bash","-l","-c",command.strip) do |i, o, e, t|
+    Open3.popen3(command.strip) do |i, o, e, t|
       o.read.split("\n").each do |line|
         print line
         sleep sleeptime
       end
       e.read.split("\n").each do |line|
-        print Paint[line, :red]
+        print Paint[line, :red, :bold]
       end
     end
   end

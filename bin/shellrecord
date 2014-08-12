@@ -87,7 +87,7 @@ while continue do
         'clearscreen' => clearscreen,
         'customprompt' => customprompt,
         'stdin' => command,
-        'stdout' => out,
+        'stdout' => out.chomp,
         'stderr' => '',
         'timespent' => 0
       })
@@ -99,14 +99,15 @@ while continue do
         err = e.read
         end_time = Time.now
         elapsed = end_time - start_time
+        stdin = displaycommand ? command : ""
         session.add_screen({
           'displaycommand' => displaycommand,
           'playprompt' => playprompt,
           'clearscreen' => clearscreen,
           'customprompt' => customprompt,
-          'stdin' => command,
-          'stdout' => out,
-          'stderr' => err,
+          'stdin' => stdin,
+          'stdout' => out.chomp,
+          'stderr' => err.chomp,
           'timespent' => elapsed
           })
         out.split("\n").each do |line|

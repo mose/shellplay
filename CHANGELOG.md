@@ -1,8 +1,13 @@
 Shellplay Changelog
 =========================
 
-v0.0.6 - wip
+v0.0.6 - 2014-08-13
 --------------------
+- save json session in pretty format for manual intervention
+- chomp output so there is less spaces
+- add a config param for setting time format on the elapsed time of last command
+- fix display of playprompt
+- improved styling on 'timespent' display
 
 v0.0.5 - 2014-08-12
 ------------------

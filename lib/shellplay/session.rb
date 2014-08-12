@@ -61,7 +61,7 @@ module Shellplay
       h[:sequence] = @sequence.map(&:export)
       outfile = File.join(@config.basedir, "#{@name}.json")
       File.open(outfile, 'w') do |f|
-        f.write JSON.dump(h)
+        f.write JSON.pretty_generate(h)
       end
     end
 
