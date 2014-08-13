@@ -17,6 +17,7 @@ continue = true
 @sleeptime = 1.0/48.0
 @lastelapsed = 0
 @playprompt = true
+@sleeptime = (1.0/48.0)
 
 counter = 1
 def usage
@@ -70,8 +71,19 @@ def shownext
   end
 end
 
+def showprevious
+  if @session.pointer > 0
+    @session.previous
+    @session.previous
+    display @session.current_screen
+    @session.next
+  else
+    puts "There is no previous screen."
+  end
+end
+
 def show(index)
-  if @session.show(index).stdin
+  if @session.show(index) && @session.show(index).stdin
     display @session.show(index)
     @session.next
   else
@@ -92,6 +104,8 @@ while continue do
     continue = false
   when /^(?:\?|h)$/
     usage
+  when /^p$/
+    showprevious
   when /^s$/
     @session.sequence.map { |c| c.stdin }.each_with_index do |l, i|
       printf("   s%-3s %s\n", i, l)
@@ -101,14 +115,18 @@ while continue do
   when ''
     shownext
   else
-    Open3.popen3(command.strip) do |i, o, e, t|
-      o.read.split("\n").each do |line|
-        print line
-        sleep sleeptime
+    begin
+      Open3.popen3(command.strip) do |i, o, e, t|
+        o.read.split("\n").each do |line|
+          puts line
+          sleep @sleeptime
+        end
+        e.read.split("\n").each do |line|
+          puts Paint[line, :red, :bold]
+        end
       end
-      e.read.split("\n").each do |line|
-        print Paint[line, :red, :bold]
-      end
+    rescue Exception => e
+      puts Paint[e.message, :red, :bold]
     end
   end
 end

@@ -87,7 +87,7 @@ while continue do
         'clearscreen' => clearscreen,
         'customprompt' => customprompt,
         'stdin' => command,
-        'stdout' => out.chomp,
+        'stdout' => out.gsub(/\\e/,27.chr).chomp,
         'stderr' => '',
         'timespent' => 0
       })

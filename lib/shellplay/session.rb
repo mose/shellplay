@@ -38,11 +38,15 @@ module Shellplay
 
     def drop_last_screen
       @sequence.pop
-      @pointer -= 1
+      previous
     end
 
     def next
       @pointer += 1
+    end
+
+    def previous
+      @pointer -= 1
     end
 
     def show(index)
