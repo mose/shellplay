@@ -36,6 +36,10 @@ module Shellplay
       @sequence << s
     end
 
+    def add_screens(screenarray)
+      @sequence += screenarray
+    end
+
     def drop_last_screen
       @sequence.pop
       previous

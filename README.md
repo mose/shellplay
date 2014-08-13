@@ -21,7 +21,15 @@ For recording a session
 
 Then type the commands you want to record, amd type q at the end it will prompt you for a file name and a title.
 
-The session file is stored in json format and can be used to be played
+The session file is stored in `$HOME/.shellplay/` in json format and can be used to be played.
+
+You can record a session in several steps, and merge then afteerwards, with
+
+    shellcat session1 session2 session3
+
+You will be prompted to provide a new title and a new name, and it will save the new concatenated session file.
+
+The session file being a pretty-formatted jeson file, it's also convenient to just edit it for fixes or adjustments. Especially as this tool is still in development and all the optimal edit features are not yet implemented.
 
 ## Playing a session
 

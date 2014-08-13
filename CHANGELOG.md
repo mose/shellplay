@@ -3,6 +3,7 @@ Shellplay Changelog
 
 v0.0.10 - wip
 -------------------
+- added a `shellcat` command to merge sessions
 
 v0.0.9 - 2014-08-13
 ------------------

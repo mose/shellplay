@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path('../../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'shellplay/session'
+
+@session = Shellplay::Session.new
+
+ARGV.each do |file|
+  this_session = Shellplay::Session.new
+  this_session.import(file)
+  @session.add_screens(this_session.sequence)
+  @session.save
+end
+

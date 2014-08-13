@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'paint'
-require 'json'
 require 'open3'
 
 
@@ -14,7 +13,6 @@ require 'shellplay/session'
 @session.import(ARGV[0])
 
 continue = true
-@sleeptime = 1.0/48.0
 @lastelapsed = 0
 @playprompt = true
 @sleeptime = (1.0/48.0)
