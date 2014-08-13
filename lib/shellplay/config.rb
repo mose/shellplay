@@ -6,6 +6,12 @@ module Shellplay
 
     include Cliprompt
 
+    def initialize(options = nil, input = STDIN, output = STDOUT)
+      confdir = File.join(ENV['HOME'], '.shellplay')
+      FileUtils.mkdir_p confdir unless Dir.exist? confdir
+      super(options = nil, input = STDIN, output = STDOUT)
+    end
+
     def set_defaults
       default :basedir, File.join(ENV['HOME'], '.shellplay')
       super

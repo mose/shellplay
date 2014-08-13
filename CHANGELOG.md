@@ -1,6 +1,10 @@
 Shellplay Changelog
 =========================
 
+v0.0.8 - 2014-08-13
+------------------
+- fix creation of the config dir at first launch
+
 v0.0.7 - 2014-08-13
 -------------------
 - fix exec of commandfs in shellplay
