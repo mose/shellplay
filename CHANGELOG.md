@@ -1,8 +1,9 @@
 Shellplay Changelog
 =========================
 
-v0.0.9 - wip
+v0.0.9 - 2014-08-13
 ------------------
+- fix the fix of creation of config dir
 
 v0.0.8 - 2014-08-13
 ------------------

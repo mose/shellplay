@@ -1,5 +1,6 @@
 require 'cliprompt'
 require 'configstruct'
+require 'fileutils'
 
 module Shellplay
   class Config < ConfigStruct
@@ -8,7 +9,7 @@ module Shellplay
 
     def initialize(options = nil, input = STDIN, output = STDOUT)
       confdir = File.join(ENV['HOME'], '.shellplay')
-      FileUtils.mkdir_p confdir unless Dir.exist? confdir
+      FileUtils::mkdir_p confdir unless Dir.exist? confdir
       super(options = nil, input = STDIN, output = STDOUT)
     end
 
