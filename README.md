@@ -19,29 +19,34 @@ For recording a session
 
     shellrecord
 
-Then type the commands you want to record, amd type q at the end it will prompt you for a file name and a title.
+Then type the commands you want to record, and type `q` at the end it will prompt you for a file name and a title.
 
 The session file is stored in `$HOME/.shellplay/` in json format and can be used to be played.
 
-You can record a session in several steps, and merge then afteerwards, with
+You can record a session in several steps, and merge then afterwards, with
 
     shellcat session1 session2 session3
 
 You will be prompted to provide a new title and a new name, and it will save the new concatenated session file.
 
-The session file being a pretty-formatted jeson file, it's also convenient to just edit it for fixes or adjustments. Especially as this tool is still in development and all the optimal edit features are not yet implemented.
+The session file being a pretty-formatted json file, it's also convenient to just edit it for fixes or adjustments. Especially as this tool is still in development and all the optimal edit features are not yet implemented.
 
 ## Playing a session
 
 For playing
 
     shellplay <session_file_name>
+    shellplay <remote session url>
+
+For example
+
+    shellplay https://raw.githubusercontent.com/mose/20140814-dokku/master/dokku-full.json
 
 or just
 
     shellplay
 
-If you don't specify the name of the session, all locally available sessions will be displayed and you will be asked to chose one.
+If you don't specify the name of the session, all locally available sessions will be displayed and you will be asked to choose one.
 
 Then type enter to go next, or `?` to display list of available commands.
 
