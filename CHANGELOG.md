@@ -1,8 +1,10 @@
 Shellplay Changelog
 =========================
 
-v0.0.11 - wip
+v0.0.11 - 2014-08-14
 ------------------
+- made possible to open a remote json file with `shellplay http://example.com/something.json`
+- moved config vars to session file
 
 v0.0.10 - 2014-08-13
 -------------------

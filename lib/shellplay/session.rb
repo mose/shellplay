@@ -1,5 +1,6 @@
 require "cliprompt"
 require "json"
+require "open-uri"
 
 require "shellplay/config"
 require "shellplay/screen"
@@ -9,11 +10,13 @@ module Shellplay
 
     include Cliprompt
 
-    attr_reader :title, :config, :pointer, :sequence
+    attr_reader :title, :config, :pointer, :sequence, :prompt, :timeformat
 
     def initialize(input = STDIN, output = STDOUT)
       @sequence = []
       @title = false
+      @prompt = false
+      @timeformat = false
       @config = Shellplay::Config.new(nil, input, output)
       @pointer = 0
     end
@@ -22,9 +25,15 @@ module Shellplay
       name ||= ask "What session do you want to load?",
         aslist: true,
         choices: Dir.glob(File.join(@config.basedir, '*.json')).map { |f| File.basename(f, '.json') }
-      infile = File.join(@config.basedir, "#{name}.json")
-      data = JSON.parse(IO.read(infile))
+      if /^https?:\/\//.match name
+        infile = open(name) { |f| f.read }
+      else
+        infile = IO.read(File.join(@config.basedir, "#{name}.json"))
+      end
+      data = JSON.parse(infile)
       @title = data['title']
+      @prompt = data['prompt']
+      @timeformat = data['timeformat']
       data['sequence'].each do |screenhash|
         add_screen(screenhash)
       end
