@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.0.12 - wip
+-----------------
+
 v0.0.11 - 2014-08-14
 ------------------
 - made possible to open a remote json file with `shellplay http://example.com/something.json`
