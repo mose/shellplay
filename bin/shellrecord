@@ -93,7 +93,7 @@ while continue do
       })
     else
       start_time = Time.now
-      Open3.popen3(command) do |i, o, e, t|
+      Open3.popen3("bash","-l", "-c", command) do |i, o, e, t|
         screen = Shellplay::Screen.new
         out = o.read
         err = e.read
@@ -116,6 +116,9 @@ while continue do
         err.split("\n").each do |line|
           puts Paint[line, :red]
         end
+      end
+      if /^cd (.*)$/.match command
+        Dir.chdir($1)
       end
     end
     session.next

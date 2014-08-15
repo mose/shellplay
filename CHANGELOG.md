@@ -3,6 +3,7 @@ Shellplay Changelog
 
 v0.0.12 - wip
 -----------------
+- fix recorder to take account of `cd` properly
 
 v0.0.11 - 2014-08-14
 ------------------
