@@ -31,6 +31,38 @@ You will be prompted to provide a new title and a new name, and it will save the
 
 The session file being a pretty-formatted json file, it's also convenient to just edit it for fixes or adjustments. Especially as this tool is still in development and all the optimal edit features are not yet implemented.
 
+During recording you can use various tricks:
+
+```
+> Newprompt
+will change the prompt from now on, on next screens
+
+d
+will delete last recorded screen
+
+q
+finishes the recording
+
+<enter>
+will introduce a blank screen
+
+? something
+will fake a command. Convenient when you simulate a command on a remote host and then you can copy paste the comamnd result below that one. The output is ended if you input a . (dot) alone on a line (like with the 'mail' command).
+
+# something
+will not display the command, only the output
+
+## something
+will not display the command, and will not display the play prompt
+
+/ something
+will issue a clear before display of the screen
+
+?##/ something
+typical combination to write full-text screens for intro, outro or just text screens. example at https://gist.github.com/mose/99843942efb9e275638b
+Note that you can use escape chars like when you build a bash prompt, for colors.
+```
+
 ## Playing a session
 
 For playing
