@@ -14,7 +14,7 @@ v0.0.13 - 2014-08-15
 v0.0.12 - 2014-08-15
 -----------------
 - fix recorder to take account of `cd` properly
-- fix recorder cmmand execution
+- fix recorder command execution
 
 v0.0.11 - 2014-08-14
 ------------------
@@ -35,7 +35,7 @@ v0.0.8 - 2014-08-13
 
 v0.0.7 - 2014-08-13
 -------------------
-- fix exec of commandfs in shellplay
+- fix exec of commands in shellplay
 - implement a `p` command in play mode for switching to previous screen
 - added management of bash escape char for colorization in output texts
 
