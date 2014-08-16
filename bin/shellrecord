@@ -26,6 +26,9 @@ while continue do
     session.save
     puts "\nRecord ended.\n"
     continue = false
+  when 'x'
+    puts "\nRecord cancelled.\n"
+    continue = false
   when "d"
     if session.pointer == 0
       puts "There is no screen to delete."

@@ -1,8 +1,12 @@
 Shellplay Changelog
 =========================
 
-v0.0.13 - wip
+v0.0.13 - 2014-08-15
 -----------------
+- add a `x` command in recorder to cancel a record
+- add a default prompt at config creation
+- improve the session selection menu to include remote recording
+- add a 'type enter to begin' at the first screen
 
 v0.0.12 - 2014-08-15
 -----------------

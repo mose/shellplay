@@ -8,8 +8,6 @@ module Shellplay
     include Cliprompt
 
     def initialize(options = nil, input = STDIN, output = STDOUT)
-      confdir = File.join(ENV['HOME'], '.shellplay')
-      FileUtils::mkdir_p confdir unless Dir.exist? confdir
       super(options = nil, input = STDIN, output = STDOUT)
     end
 
@@ -22,7 +20,7 @@ module Shellplay
       values = {}
       output.puts Paint['Create a new shellplay configuration:', :blue]
       values['editor'] = guess 'EDITOR', 'What is the path to launch your text editor?', 'vim'
-      values['prompt'] = ask 'What is the default prompt you want to use?'
+      values['prompt'] = ask 'What is the default prompt you want to use?', "\e[36m #{ENV['USER']} > \e[0m"
       values['timeformat'] = ask 'What is the time format you want to display?', '%.1f'
       write values
     end

@@ -22,9 +22,19 @@ module Shellplay
     end
 
     def import(name)
-      name ||= ask "What session do you want to load?",
-        aslist: true,
-        choices: Dir.glob(File.join(@config.basedir, '*.json')).map { |f| File.basename(f, '.json') }
+      unless name
+        sessions = Dir.glob(File.join(@config.basedir, '*.json'))
+        if sessions.count == 0
+          puts "There is no recorded session locally."
+          puts "Do you want to play a remote recording?"
+          name = ask "url: "
+        else
+          puts "What session do you want to load?"
+          name = ask "(input a number or an url if you want to play a remote recording)",
+            aslist: true,
+            choices: sessions.map { |f| File.basename(f, '.json') }
+        end
+      end
       if /^https?:\/\//.match name
         infile = open(name) { |f| f.read }
       else

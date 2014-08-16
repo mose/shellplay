@@ -41,7 +41,10 @@ d
 will delete last recorded screen
 
 q
-finishes the recording
+finishes the recording and saves
+
+x
+ends the recording without saving
 
 <enter>
 will introduce a blank screen
