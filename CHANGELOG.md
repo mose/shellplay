@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.0.14 - wip
+----------------------
+
 v0.0.13 - 2014-08-15
 -----------------
 - add a `x` command in recorder to cancel a record
