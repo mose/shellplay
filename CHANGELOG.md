@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.1.2 - wip
+-------------------
+
 v0.1.1 - 2014-08-17
 --------------------
 - remove the need for input of prompt and timeformat if they are included in the session
