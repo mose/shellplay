@@ -1,0 +1,6 @@
+language: ruby
+bundler_args: --path vendor
+cache: bundler
+rvm:
+  - 1.9.3
+  - 2.1.1
