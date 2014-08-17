@@ -1,8 +1,9 @@
 Shellplay Changelog
 =========================
 
-v0.0.14 - wip
+v0.1.0 - 2014-08-17
 ----------------------
+- first version seems ok, it's running and has been used on the field
 
 v0.0.13 - 2014-08-15
 -----------------
