@@ -1,5 +1,7 @@
 {
   "title": "test prez",
+  "prompt": "> ",
+  "timeformat": "%.1f",
   "sequence": [
     {
       "stdin": "ls",

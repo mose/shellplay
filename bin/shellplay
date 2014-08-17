@@ -42,7 +42,7 @@ def display(screen)
     if screen.customprompt
       print screen.customprompt
     else
-      print @session.prompt || @session.config.prompt
+      print @session.config.prompt
     end
     sleep @sleeptime
     print screen.stdin
@@ -127,6 +127,6 @@ while continue do
   end
   if @playprompt
     print "\n\e[33m>\e[0m "
-    printf("\e[33melapsed: \e[0m\e[1;93m#{@session.timeformat || @session.config.timeformat}s\e[0m ", @lastelapsed) unless @lastelapsed == 0
+    printf("\e[33melapsed: \e[0m\e[1;93m#{@session.config.timeformat}s\e[0m ", @lastelapsed) unless @lastelapsed == 0
   end
 end

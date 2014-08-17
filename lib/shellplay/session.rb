@@ -12,24 +12,27 @@ module Shellplay
 
     attr_reader :title, :config, :pointer, :sequence, :prompt, :timeformat
 
-    def initialize(input = STDIN, output = STDOUT)
+    def initialize(basedir = nil, basefile = nil, input = STDIN, output = STDOUT)
       @sequence = []
       @title = false
       @prompt = false
       @timeformat = false
-      @config = Shellplay::Config.new(nil, input, output)
       @pointer = 0
+      @basedir = basedir || File.join(ENV['HOME'], '.shellplay')
+      @basefile = basefile || 'config.yml'
+      @input = input
+      @output = output
     end
 
     def import(name)
       unless name
-        sessions = Dir.glob(File.join(@config.basedir, '*.json'))
+        sessions = Dir.glob(File.join(@basedir, '*.json'))
         if sessions.count == 0
-          puts "There is no recorded session locally."
-          puts "Do you want to play a remote recording?"
+          @output.puts "There is no recorded session locally."
+          @output.puts "Do you want to play a remote recording?"
           name = ask "url: "
         else
-          puts "What session do you want to load?"
+          @output.puts "What session do you want to load?"
           name = ask "(input a number or an url if you want to play a remote recording)",
             aslist: true,
             choices: sessions.map { |f| File.basename(f, '.json') }
@@ -38,12 +41,15 @@ module Shellplay
       if /^https?:\/\//.match name
         infile = open(name) { |f| f.read }
       else
-        infile = IO.read(File.join(@config.basedir, "#{name}.json"))
+        infile = IO.read(File.join(@basedir, "#{name}.json"))
       end
       data = JSON.parse(infile)
       @title = data['title']
-      @prompt = data['prompt']
-      @timeformat = data['timeformat']
+      @config = Shellplay::Config.new({
+        basedir: @basedir,
+        basefile: File.join(@basedir, @basefile),
+        prompt: data['prompt'],
+        timeformat: data['timeformat'] }, input, output)
       data['sequence'].each do |screenhash|
         add_screen(screenhash)
       end
