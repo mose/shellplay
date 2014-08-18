@@ -1,6 +1,7 @@
 (function(){
 
   var current = 0;
+  var last = $(".screen").size() - 1;
 
   function draw() {
     $(".screen").hide();
@@ -8,7 +9,9 @@
   }
 
   function next() {
-    current++;
+    if (current < last) {
+      current++;
+    }
     draw();
   }
 
