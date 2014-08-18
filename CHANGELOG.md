@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.1.3 - wip
+-------------------
+
 v0.1.2 - 2014-08-18
 -------------------
 - fix recording that was broken in 0.1.1
