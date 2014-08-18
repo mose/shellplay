@@ -103,6 +103,11 @@ To export
 
 It will save the html in a dir in `.shellplay` under the name of the session. The dir contains index.html, css, and js files, ready to be played from your laptop or uploaded to your server.
 
+Navigation on the html version is
+
+- `p`, `left` for previous screen,
+- `n`, `enter` or `right` for next screen
+
 ## Todo
 
 - <s>handle the no-display entries</s>
