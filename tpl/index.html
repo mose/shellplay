@@ -7,7 +7,6 @@
     <link href="shellplay.css" rel="stylesheet">
     <link href="colors.css" rel="stylesheet">
     <script src="jquery-1.11.1.min.js"></script>
-    <script src="shellplay.js"></script>
   </head>
   <body>
 
@@ -15,7 +14,7 @@
       <div class="row">
 <div class="col-md-12 main">
 <% @session.sequence.each_with_index do |screen, i| %>
-<div class="screen s<%= i %>">
+<div class="screen" id="s<%= i %>">
 <% if screen.customprompt %>
 <%= Shell2html.to_html(screen.customprompt) %>
 <% else %>
@@ -33,5 +32,6 @@
       </div>
     </div>
 
+    <script src="shellplay.js"></script>
   </body>
 </html>
