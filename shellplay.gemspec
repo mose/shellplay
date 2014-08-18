@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'paint'
   spec.add_dependency 'cliprompt'
   spec.add_dependency 'configstruct'
+  spec.add_dependency 'shell2html'
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"

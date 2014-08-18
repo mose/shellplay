@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'paint'
+require 'erb'
+
+lib = File.expand_path('../../lib', __FILE__)
+tpl = File.expand_path('../../tpl', __FILE__)
+basedir = File.join(ENV['HOME'], '.shellplay')
+
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'shellplay/session'
+
+@session = Shellplay::Session.new
+@session.import(ARGV[0])
+
+dest = File.join(basedir, @session.name)
+FileUtils.mkdir_p(dest) unless Dir.exist? dest
+
+erb = ERB.new(File.read(File.join(tpl, 'index.html')))
+File.open(File.join(dest, "index.html"), 'w') do |f|
+  f.puts erb.result(binding)
+end
+

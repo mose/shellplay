@@ -1,5 +1,9 @@
+require "shell2html"
+
 module Shellplay
   class Screen
+
+    include Shell2html
 
     attr_reader :stdin, :stdout, :stderr, :display, :timespent, :displaycommand, :playprompt, :clearscreen, :customprompt
 
@@ -36,6 +40,10 @@ module Shellplay
         stderr: @stderr,
         timespent: @timespent
       }
+    end
+
+    def html
+      to_html(@stdout)
     end
 
   end

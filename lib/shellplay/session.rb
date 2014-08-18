@@ -10,10 +10,11 @@ module Shellplay
 
     include Cliprompt
 
-    attr_reader :title, :config, :pointer, :sequence, :prompt, :timeformat
+    attr_reader :title, :name, :config, :pointer, :sequence, :prompt, :timeformat
 
     def initialize(basedir = nil, basefile = nil, input = STDIN, output = STDOUT)
       @sequence = []
+      @name = false
       @title = false
       @prompt = false
       @timeformat = false
@@ -31,11 +32,13 @@ module Shellplay
           @output.puts "There is no recorded session locally."
           @output.puts "Do you want to play a remote recording?"
           name = ask "url: "
+          session_name = File.basename(name, '.json')
         else
           @output.puts "What session do you want to load?"
           name = ask "(input a number or an url if you want to play a remote recording)",
             aslist: true,
             choices: sessions.map { |f| File.basename(f, '.json') }
+          session_name = name
         end
       end
       if /^https?:\/\//.match name
@@ -44,6 +47,7 @@ module Shellplay
         infile = IO.read(File.join(@basedir, "#{name}.json"))
       end
       data = JSON.parse(infile)
+      @name = session_name
       @title = data['title']
       @config = Shellplay::Config.new({
         basedir: @basedir,
@@ -92,7 +96,7 @@ module Shellplay
       h = {}
       h[:title] = @title
       h[:sequence] = @sequence.map(&:export)
-      outfile = File.join(@config.basedir, "#{@name}.json")
+      outfile = File.join(@basedir, "#{@name}.json")
       File.open(outfile, 'w') do |f|
         f.write JSON.pretty_generate(h)
       end
