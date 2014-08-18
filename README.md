@@ -111,9 +111,10 @@ Navigation on the html version is
 ## Todo
 
 - <s>handle the no-display entries</s>
+- <s>when prototype is ready, switch to v0.1.0</s>
+- make an html export
 - write a shell colors parser of some sort because \e[1;33m sucks
 - add a function in player to edit a screen
-- when prototype is ready, switch to v0.1.0
 - test coverage
 - save and load sessions from gist
   - add gist token to config or something
