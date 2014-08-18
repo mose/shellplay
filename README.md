@@ -94,6 +94,15 @@ If you don't specify the name of the session, all locally available sessions wil
 
 Then type enter to go next, or `?` to display list of available commands.
 
+## Export to HTML
+
+To export
+
+    shellexport <session_file_name>
+    shellplay <remote session url>
+
+It will save the html in a dir in `.shellplay` under the name of the session. The dir contains index.html, css, and js files, ready to be played from your laptop or uploaded to your server.
+
 ## Todo
 
 - <s>handle the no-display entries</s>

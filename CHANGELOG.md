@@ -1,8 +1,9 @@
 Shellplay Changelog
 =========================
 
-v0.1.3 - wip
+v0.1.3 - 2014-08-19
 -------------------
+- html export rudimentary but functional
 
 v0.1.2 - 2014-08-18
 -------------------
