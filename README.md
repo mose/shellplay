@@ -6,7 +6,7 @@ Shellplay
 [![Coverage Status](https://img.shields.io/coveralls/mose/shellplay.svg)](https://coveralls.io/r/mose/shellplay?branch=master)
 [![Dependency Status](https://img.shields.io/gemnasium/mose/shellplay.svg)](https://gemnasium.com/mose/shellplay)
 [![Code Climate](https://img.shields.io/codeclimate/github/mose/shellplay.svg)](https://codeclimate.com/github/mose/shellplay)
-[![Code Climate](http://img.shields.io/gem/dt/shellplay-blue.svg)](https://rubygems.org/gems/shellplay)
+[![Code Climate](http://img.shields.io/gem/dt/shellplay.svg)](https://rubygems.org/gems/shellplay)
 
 ----
 
