@@ -2,6 +2,7 @@
 
 require 'paint'
 require 'erb'
+require "shell2html"
 
 lib = File.expand_path('../../lib', __FILE__)
 tpl = File.expand_path('../../tpl', __FILE__)
@@ -22,3 +23,9 @@ File.open(File.join(dest, "index.html"), 'w') do |f|
   f.puts erb.result(binding)
 end
 
+FileUtils.cp(File.join(tpl, 'jquery-1.11.1.min.js'), dest)
+FileUtils.cp(File.join(tpl, 'shellplay.js'), dest)
+FileUtils.cp(File.join(tpl, 'shellplay.css'), dest)
+File.open(File.join(dest, "colors.css"), 'w') do |f|
+  f.puts Shell2html.css
+end

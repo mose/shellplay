@@ -1,0 +1,28 @@
+* {
+
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}
+.container {
+
+}
+.main {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: monospace;
+  border: 1px solid #848484;
+  border-radius: 5px;
+  box-shadow: 0 0 35px 20px #424648;
+  overflow: hidden;
+}
+.screen {
+  margin: 30px;
+}

@@ -4,8 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=">
     <title><%= @session.title %></title>
-    <link href="style.css" rel="stylesheet">
+    <link href="shellplay.css" rel="stylesheet">
+    <link href="colors.css" rel="stylesheet">
     <script src="jquery-1.11.1.min.js"></script>
+    <script src="shellplay.js"></script>
   </head>
   <body>
 
@@ -13,8 +15,18 @@
       <div class="row">
 <div class="col-md-12 main">
 <% @session.sequence.each_with_index do |screen, i| %>
-<div class="screen">
-<%= screen.html %>
+<div class="screen s<%= i %>">
+<% if screen.customprompt %>
+<%= Shell2html.to_html(screen.customprompt) %>
+<% else %>
+<%= Shell2html.to_html(@session.config.prompt) %>
+<% end %>
+<%= Shell2html.to_html(screen.stdin) %>
+<br>
+<%= Shell2html.to_html(screen.stdout) %>
+<% if screen.stderr %>
+<%= Shell2html.to_html(screen.stderr) %>
+<% end %>
 </div>
 <% end %>
 </div>

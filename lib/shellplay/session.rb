@@ -32,22 +32,21 @@ module Shellplay
           @output.puts "There is no recorded session locally."
           @output.puts "Do you want to play a remote recording?"
           name = ask "url: "
-          session_name = File.basename(name, '.json')
         else
           @output.puts "What session do you want to load?"
           name = ask "(input a number or an url if you want to play a remote recording)",
             aslist: true,
             choices: sessions.map { |f| File.basename(f, '.json') }
-          session_name = name
         end
       end
       if /^https?:\/\//.match name
         infile = open(name) { |f| f.read }
+        @name = File.basename(name, '.json')
       else
         infile = IO.read(File.join(@basedir, "#{name}.json"))
+        @name = name
       end
       data = JSON.parse(infile)
-      @name = session_name
       @title = data['title']
       @config = Shellplay::Config.new({
         basedir: @basedir,
