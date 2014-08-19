@@ -103,6 +103,8 @@ To export
 
 It will save the html in a dir in `.shellplay` under the name of the session. The dir contains index.html, css, and js files, ready to be played from your laptop or uploaded to your server.
 
+Note, the `shellexport` command will not override `shellplay.css`, `shellplay.js` and `colors.css` if they exist. So you can apply changes on those files after the first export, then work on your session and re-export. If you want to rest those files, you can just delete them and re-export.
+
 Navigation on the html version is
 
 - `p`, `left` for previous screen,
