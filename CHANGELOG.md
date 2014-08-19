@@ -1,6 +1,10 @@
 Shellplay Changelog
 =========================
 
+v0.1.5 - 2014-08-19
+-------------------
+- better initial prompt for html version
+
 v0.1.4 - 2014-08-19
 -------------------
 - optimize html export

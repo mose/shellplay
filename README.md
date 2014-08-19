@@ -108,6 +108,8 @@ Navigation on the html version is
 - `p`, `left` for previous screen,
 - `n`, `enter` or `right` for next screen
 
+Demo HTML: http://mose.com/20140814-dokku/
+
 ## Todo
 
 - <s>handle the no-display entries</s>
