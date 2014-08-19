@@ -33,9 +33,10 @@ end
 def display(screen)
   if screen.clearscreen
     if ENV['TERM_PROGRAM'] = 'iTerm.app'
-      printf "\e]50;ClearScrollback\a"
+      print "\e]50;ClearScrollback\a"
     else
-      printf "\e\143"
+      `clear`
+      print "\e[c"
     end
   end
   if screen.displaycommand
@@ -98,6 +99,7 @@ while continue do
   when /^(?:q|x)$/
     puts "\nPlay ended.\n"
     continue = false
+    exit
   when /^(?:\?|h)$/
     usage
   when /^p$/

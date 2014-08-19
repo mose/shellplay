@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 #gem "shell2html", path: '../shell2html'
+#gem "configstruct", path: '../configstruct'

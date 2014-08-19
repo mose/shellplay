@@ -8,7 +8,7 @@ module Shellplay
     include Cliprompt
 
     def initialize(options = nil, input = STDIN, output = STDOUT)
-      super(options, input = STDIN, output = STDOUT)
+      super(options, input = STDIN, output = STDOUT, true)
     end
 
     def set_defaults

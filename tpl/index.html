@@ -14,7 +14,7 @@
       <div class="row">
 <div class="col-md-12 main">
 <div class="screen" id="intro">
-<%= Shell2html.to_html("\e[33m>\e[0m Type &lt;enter&gt; to begin, use arrows or p/n to navigate.") %>
+<%= Shell2html.to_html("\e[33m>\e[0m Type <enter> to begin, use arrows or p/n to navigate.") %>
 </div>
 <% @session.sequence.each_with_index do |screen, i| %>
 <div class="screen" id="s<%= i %>">
