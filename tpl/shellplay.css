@@ -21,7 +21,8 @@ body {
   border: 1px solid #848484;
   border-radius: 5px;
   box-shadow: 0 0 35px 20px #424648;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .screen {
   margin: 30px;

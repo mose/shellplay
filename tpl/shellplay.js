@@ -23,7 +23,9 @@
     draw();
   }
 
-  draw();
+  $(".screen").hide();
+  $("#intro").show();
+
 
   $(document).keydown(function(e) {
     switch(e.keyCode) {

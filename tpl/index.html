@@ -13,8 +13,12 @@
     <div class="container">
       <div class="row">
 <div class="col-md-12 main">
+<div class="screen" id="intro">
+<%= Shell2html.to_html("\e[33m>\e[0m Type <enter> to begin.") %>
+</div>
 <% @session.sequence.each_with_index do |screen, i| %>
 <div class="screen" id="s<%= i %>">
+<% if screen.displaycommand %>
 <% if screen.customprompt %>
 <%= Shell2html.to_html(screen.customprompt) %>
 <% else %>
@@ -22,9 +26,16 @@
 <% end %>
 <%= Shell2html.to_html(screen.stdin) %>
 <br>
+<% end %>
 <%= Shell2html.to_html(screen.stdout) %>
 <% if screen.stderr %>
 <%= Shell2html.to_html(screen.stderr) %>
+<% end %>
+<% if screen.playprompt %>
+<%= Shell2html.to_html("\n\e[33m>\e[0m ") %>
+<% if screen.timespent != 0 && screen.displaycommand %>
+<%= Shell2html.to_html(sprintf("\e[33melapsed: \e[0m\e[1;93m#{@session.config.timeformat}s\e[0m ", screen.timespent)) %>
+<% end %>
 <% end %>
 </div>
 <% end %>

@@ -1,8 +1,10 @@
 Shellplay Changelog
 =========================
 
-v0.1.4 - wip
+v0.1.4 - 2014-08-19
 -------------------
+- optimize html export
+- fix display of prompts in html export
 
 v0.1.3 - 2014-08-19
 -------------------

@@ -23,9 +23,20 @@ File.open(File.join(dest, "index.html"), 'w') do |f|
   f.puts erb.result(binding)
 end
 
-FileUtils.cp(File.join(tpl, 'jquery-1.11.1.min.js'), dest)
-FileUtils.cp(File.join(tpl, 'shellplay.js'), dest)
-FileUtils.cp(File.join(tpl, 'shellplay.css'), dest)
-File.open(File.join(dest, "colors.css"), 'w') do |f|
-  f.puts Shell2html.css
+unless File.exist? File.join(dest, 'jquery-1.11.1.min.js')
+  FileUtils.cp(File.join(tpl, 'jquery-1.11.1.min.js'), dest)
+end
+
+unless File.exist? File.join(dest, 'shellplay.js')
+  FileUtils.cp(File.join(tpl, 'shellplay.js'), dest)
+end
+
+unless File.exist? File.join(dest, 'shellplay.css')
+  FileUtils.cp(File.join(tpl, 'shellplay.css'), dest)
+end
+
+unless File.exist? File.join(dest, 'colors.css')
+  File.open(File.join(dest, "colors.css"), 'w') do |f|
+    f.puts Shell2html.css
+  end
 end
