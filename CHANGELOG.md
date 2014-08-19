@@ -4,7 +4,7 @@ Shellplay Changelog
 v0.1.7 - wip
 -------------------
 
-v0.1.6 - 2014-08-<19 class="shel"></19>
+v0.1.6 - 2014-08-19
 -------------------
 - fix display of session prompt
 - better quit on bash for shellplayer
