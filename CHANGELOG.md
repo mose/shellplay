@@ -1,6 +1,9 @@
 Shellplay Changelog
 =========================
 
+v0.1.6 - wip
+-------------------
+
 v0.1.5 - 2014-08-19
 -------------------
 - better initial prompt for html version
