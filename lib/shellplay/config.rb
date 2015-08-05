@@ -2,6 +2,8 @@ require 'cliprompt'
 require 'configstruct'
 require 'fileutils'
 
+# config struct class
+# refer to https://github.com/mose/configstruct for documentation
 module Shellplay
   class Config < ConfigStruct
 
@@ -11,12 +13,14 @@ module Shellplay
       super(options, input = STDIN, output = STDOUT, true)
     end
 
+    # override default config values
     def set_defaults
       default :basedir, File.join(ENV['HOME'], '.shellplay')
       default :basefile, File.join(self.basedir, 'config.yml')
       super
     end
 
+    # interactive configuration creation process
     def setup
       unless self.prompt && self.timeformat
         values = {}
