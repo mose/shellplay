@@ -21,6 +21,8 @@ module Shellplay
     end
 
     # interactive configuration creation process
+    # uses cliprompt for console interaction
+    # refer to https://github.com/mose/cliprompt for documentation
     def setup
       unless self.prompt && self.timeformat
         values = {}
