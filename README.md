@@ -22,6 +22,16 @@ It can record a session and playback from it, so if internet fails in your confe
 
 The first time you run it, some configuration variables will be asked, and stored in `$HOME/.shellplay/config.yml`. All the recorded sessions will be stored in that same directory.
 
+### Development install
+
+    git clone git@github.com:mose/shellplay.git
+    cd shellplay
+    bundle install --path vendor
+
+To launch shellrecord or shellplay from local repo:
+
+    bundle exec ./bin/shellrecord
+
 ## Recording a session
 
 For recording a session

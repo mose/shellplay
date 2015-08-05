@@ -20,6 +20,7 @@ module Shellplay
       @timeformat = false
       @pointer = 0
       @basedir = basedir || File.join(ENV['HOME'], '.shellplay')
+      FileUtils.mkdir_p(@basedir) unless Dir.exist? @basedir
       @basefile = basefile || 'config.yml'
       @input = input
       @output = output
