@@ -7,7 +7,7 @@ Shellplay
 [![Coverage Status](https://img.shields.io/coveralls/mose/shellplay.svg)](https://coveralls.io/r/mose/shellplay?branch=master)
 [![Dependency Status](https://img.shields.io/gemnasium/mose/shellplay.svg)](https://gemnasium.com/mose/shellplay)
 [![Code Climate](https://img.shields.io/codeclimate/github/mose/shellplay.svg)](https://codeclimate.com/github/mose/shellplay)
-[![Inch CI](https://inch-ci.org/github/mose/shellplay.svg?branch=master&style=flat)](https://inch-ci.org/github/mose/shellplay)
+[![Inch CI](https://inch-ci.org/github/mose/shellplay.svg)](https://inch-ci.org/github/mose/shellplay)
 ----
 
 This is a CLI tool for recording and presenting step by step operations from the console. It is targeted at presentations that would simulate live coding, without the random murphy factor of it.
