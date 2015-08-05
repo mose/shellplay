@@ -30,6 +30,8 @@ def usage
   puts
 end
 
+# generic display method
+# 
 def display(screen)
   if screen.clearscreen
     if ENV['TERM_PROGRAM'] = 'iTerm.app'
@@ -59,6 +61,7 @@ def display(screen)
   end
 end
 
+# move to the next screen
 def shownext
   if @session.current_screen and @session.current_screen.stdin
     display @session.current_screen
@@ -70,6 +73,7 @@ def shownext
   end
 end
 
+# move to the previous screen
 def showprevious
   if @session.pointer > 0
     @session.previous
@@ -81,6 +85,7 @@ def showprevious
   end
 end
 
+# jump to an arbitrary screen
 def show(index)
   if @session.show(index) && @session.show(index).stdin
     display @session.show(index)
@@ -93,6 +98,7 @@ end
 
 print "\n\e[33m>\e[0m Type <enter> to begin."
 
+# main loop
 while continue do
   command = STDIN.gets.strip
   case command
