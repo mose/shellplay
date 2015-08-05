@@ -4,6 +4,7 @@ Shellplay Changelog
 v0.1.7 - wip
 -------------------
 - create config dir if it does not exist (first time launch)
+- add more code documentation
 
 v0.1.6 - 2014-08-19
 -------------------
