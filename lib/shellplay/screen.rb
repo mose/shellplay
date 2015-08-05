@@ -1,3 +1,4 @@
+# class for the screen object
 module Shellplay
   class Screen
 
@@ -14,6 +15,7 @@ module Shellplay
       @timespent = 0
     end
 
+    # transforms a hash into a screen object
     def import(hash)
       @displaycommand = !!hash['displaycommand']
       @playprompt = !!hash['playprompt']
@@ -25,6 +27,7 @@ module Shellplay
       @timespent = hash['timespent']
     end
 
+    # transfroms a screen object into a hash
     def export
       {
         displaycommand: @displaycommand,
