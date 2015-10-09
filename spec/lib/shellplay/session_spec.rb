@@ -26,7 +26,7 @@ describe Shellplay::Session, "A shellplay session" do
 
     context "when we import an invalid file, " do
       it "should break and throw exception" do
-        expect { subject.import('/file/notfound') }.to raise_error
+        expect { subject.import('/file/notfound') }.to raise_error(Errno::ENOENT)
       end
     end
 
