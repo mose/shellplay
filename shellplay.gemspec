@@ -18,14 +18,14 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^spec/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'paint'
+  spec.add_dependency 'paint', '~> 1.0.0'
   spec.add_dependency 'cliprompt'
-  spec.add_dependency 'configstruct', "~> 0.0.4"
+  spec.add_dependency 'configstruct', '~> 0.0.4'
   spec.add_dependency 'shell2html'
 
-  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "bundler", '~> 1.6'
   spec.add_development_dependency "rake"
-  spec.add_development_dependency 'rspec', "~> 3.0"
+  spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'coveralls'
 end
