@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'paint', '~> 1.0.0'
-  spec.add_dependency 'cliprompt'
-  spec.add_dependency 'configstruct', '~> 0.0.4'
-  spec.add_dependency 'shell2html'
+  spec.add_dependency 'cliprompt', '~> 0.1.2'
+  spec.add_dependency 'configstruct', '~> 0.1.0'
+  spec.add_dependency 'shell2html', '~> 0.0.5'
 
   spec.add_development_dependency "bundler", '~> 1.6'
   spec.add_development_dependency "rake"

@@ -1,10 +1,11 @@
 Shellplay Changelog
 =========================
 
-v0.1.7 - wip
+v0.1.7 - 2015-11-23
 -------------------
 - create config dir if it does not exist (first time launch)
 - add more code documentation
+- update dependencies
 
 v0.1.6 - 2014-08-19
 -------------------
