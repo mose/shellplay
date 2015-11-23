@@ -1,6 +1,10 @@
 Shellplay Changelog
 =========================
 
+v0.1.8 - wip
+-------------------
+- fix clear screen on linux
+
 v0.1.7 - 2015-11-23
 -------------------
 - create config dir if it does not exist (first time launch)

@@ -34,11 +34,10 @@ end
 # 
 def display(screen)
   if screen.clearscreen
-    if ENV['TERM_PROGRAM'] = 'iTerm.app'
+    if ENV['TERM_PROGRAM'] == 'iTerm.app'
       print "\e]50;ClearScrollback\a"
     else
-      `clear`
-      print "\e[c"
+      print "\033c"
     end
   end
   if screen.displaycommand
