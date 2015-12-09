@@ -7,6 +7,8 @@ require 'open3'
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+SHELL = ENV['SHELL']
+
 require 'shellplay/session'
 
 @session = Shellplay::Session.new
@@ -25,7 +27,7 @@ def usage
   puts "  s#         jump to screen #"
   puts "  <enter>    jump to next screen"
   puts "  p          jump to previous screen"
-  puts "  <command>  execute a subcommand in a bash -l -c"
+  puts "  <command>  execute a subcommand in a `$SHELL -c`"
   puts "  x,q        quit"
   puts
 end
@@ -119,7 +121,7 @@ while continue do
     shownext
   else
     begin
-      Open3.popen3(command.strip) do |i, o, e, t|
+      Open3.popen3(SHELL, "-c", command.strip) do |i, o, e, t|
         o.read.split("\n").each do |line|
           puts line
           sleep @sleeptime

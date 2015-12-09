@@ -1,9 +1,11 @@
 Shellplay Changelog
 =========================
 
-v0.1.8 - wip
+v0.1.8 - 2015-12-09
 -------------------
 - fix clear screen on linux
+- fix command execution to use $SHELL rather than bash
+  for FreeBSD comopat
 
 v0.1.7 - 2015-11-23
 -------------------

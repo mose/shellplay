@@ -6,6 +6,8 @@ require 'open3'
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+SHELL = ENV['SHELL']
+
 require 'shellplay'
 
 continue = true
@@ -96,7 +98,7 @@ while continue do
       })
     else
       start_time = Time.now
-      Open3.popen3("bash","-l", "-c", command) do |i, o, e, t|
+      Open3.popen3(SHELL,"-c", command) do |i, o, e, t|
         screen = Shellplay::Screen.new
         out = o.read
         err = e.read
