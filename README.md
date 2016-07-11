@@ -120,7 +120,7 @@ Navigation on the html version is
 - `p`, `left` for previous screen,
 - `n`, `enter` or `right` for next screen
 
-Demo HTML: http://mose.com/20140814-dokku/
+Demo HTML: http://mose.fr/20140814-dokku/
 
 ## Todo
 
