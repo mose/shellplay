@@ -14,8 +14,6 @@ This is a CLI tool for recording and presenting step by step operations from the
 
 It can record a session and playback from it, so if internet fails in your conference room you are safe.
 
-**Note: this is a barely working, use at your own risk.**
-
 ## Installation
 
     gem install shellplay
