@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^spec/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'paint', '~> 1.0.0'
+  spec.add_dependency 'paint', '~> 2.0.0'
   spec.add_dependency 'cliprompt', '~> 0.1.2'
   spec.add_dependency 'configstruct', '~> 0.1.0'
   spec.add_dependency 'shell2html', '~> 0.0.6'
